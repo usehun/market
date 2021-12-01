@@ -1,7 +1,9 @@
 import './index.css';
+import './reset.css';
 // import './js.js';
 import axios from 'axios';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function MainPage(){
     const [products, setProducts] = useState([]);
@@ -32,18 +34,20 @@ function MainPage(){
                         products.map(function(menu, index){
                             return (
                                 <div className="product-card">
-                                    <img className="product-img" src={menu.img} />
-                                    <div className="product-content">
-                                        <span className="product-name">
-                                            {menu.name}
-                                        </span>
-                                        <span className="product-price">
-                                            {menu.price}
-                                        </span>
-                                        <span>
-                                            비고
-                                        </span>
-                                    </div>
+                                    <Link className="product-link" to={`/product/${index}`}>
+                                        <img className="product-img" src={menu.img} />
+                                        <div className="product-content">
+                                            <span className="product-name">
+                                                {menu.name}
+                                            </span>
+                                            <span className="product-price">
+                                                {menu.price}
+                                            </span>
+                                            <span>
+                                                비고
+                                            </span>
+                                        </div>
+                                    </Link> 
                                 </div>
                             )
                         })
